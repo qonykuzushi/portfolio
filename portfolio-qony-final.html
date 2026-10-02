@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Putri Qonita Arif — IT Administrator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FDF0F2;
+    --card: #FFFFFF;
+    --surface: #FBE8EC;
+    --text: #2D1A1F;
+    --text-muted: #8C6570;
+    --pink: #C94B65;
+    --pink-soft: #E07A90;
+    --pink-glow: rgba(201, 75, 101, 0.08);
+    --green: #3D8A64;
+    --green-soft: #5DAF85;
+    --green-glow: rgba(61, 138, 100, 0.1);
+    --line-pink: rgba(201, 75, 101, 0.18);
+    --line-green: rgba(61, 138, 100, 0.2);
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; margin: 0; padding: 0; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* Nav */
+  nav {
+    padding: 28px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-name {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--pink-soft);
+  }
+  .nav-email {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .nav-email:hover { color: var(--pink-soft); }
+
+  /* Hero */
+  .hero { padding: 72px 0 60px; }
+  .hero-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--green);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--green);
+  }
+  .hero-name {
+    font-size: clamp(38px, 8vw, 56px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.7s ease forwards 0.1s;
+  }
+  .hero-name span { color: var(--pink); }
+  .hero-role {
+    margin-top: 16px;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--pink-soft);
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.3s;
+  }
+  .hero-bio {
+    margin-top: 24px;
+    font-size: 15px;
+    color: var(--text-muted);
+    max-width: 580px;
+    line-height: 1.75;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.5s;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Divider */
+  .divider { height: 1px; background: var(--line-pink); margin: 0; }
+  .divider-green { height: 1px; background: var(--line-green); margin: 0; }
+
+  /* Section */
+  section { padding: 64px 0; }
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .section-label.pink { color: var(--pink); }
+  .section-label.green { color: var(--green); }
+
+  /* Work */
+  .work-item { margin-bottom: 40px; }
+  .work-item:last-child { margin-bottom: 0; }
+  .work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+  .work-title { font-size: 16px; font-weight: 600; color: var(--text); }
+  .work-period { font-size: 13px; color: var(--text-muted); white-space: nowrap; }
+  .work-org { font-size: 14px; color: var(--pink-soft); margin-bottom: 14px; }
+  .work-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .work-list li {
+    font-size: 14px;
+    color: var(--text-muted);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.65;
+  }
+  .work-list li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--pink);
+  }
+  .work-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .tag-pink {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--pink);
+    background: var(--pink-glow);
+    border: 1px solid var(--line-pink);
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.03em;
+  }
+  .tag-green {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--green);
+    background: var(--green-glow);
+    border: 1px solid var(--line-green);
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.03em;
+  }
+
+  /* Featured Projects */
+  .projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--line-pink);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(201, 75, 101, 0.07);
+  }
+  .project-card-header {
+    padding: 28px 28px 20px;
+    border-bottom: 1px solid var(--line-pink);
+  }
+  .project-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #fff;
+    background: var(--pink);
+    padding: 3px 9px;
+    border-radius: 3px;
+    margin-bottom: 12px;
+  }
+  .project-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .project-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* Placeholder media */
+  .project-video {
+    margin: 0 28px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #FBE8EC;
+    border: 1px dashed rgba(232, 116, 138, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    color: var(--text-muted);
+    font-size: 13px;
+    text-align: center;
+  }
+  .placeholder-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--pink-glow);
+    border: 1px solid var(--line-pink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+  .placeholder-label {
+    font-size: 12px;
+    color: var(--pink);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .project-body { padding: 24px 28px 28px; }
+  .project-block { margin-bottom: 20px; }
+  .project-block:last-child { margin-bottom: 0; }
+  .project-block-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--green-soft);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .problem-list, .result-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .problem-list li, .result-list li {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.65;
+  }
+  .problem-list li::before {
+    content: '✗';
+    position: absolute;
+    left: 0;
+    color: #C47A7A;
+    font-size: 11px;
+    top: 2px;
+  }
+  .result-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-size: 11px;
+    top: 2px;
+  }
+  .solution-text {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line-pink);
+  }
+
+  /* Ongoing Projects */
+  .ongoing-card {
+    background: var(--card);
+    border: 1px solid var(--line-green);
+    box-shadow: 0 2px 12px rgba(61, 138, 100, 0.07);
+    border-radius: 10px;
+    padding: 22px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .ongoing-info { flex: 1; min-width: 200px; }
+  .ongoing-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .ongoing-desc {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+  .ongoing-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--green);
+    background: var(--green-glow);
+    border: 1px solid var(--line-green);
+    padding: 5px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .ongoing-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* Education */
+  .edu-block { margin-bottom: 28px; }
+  .edu-block:last-child { margin-bottom: 0; }
+  .edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+  .edu-title { font-size: 16px; font-weight: 600; color: var(--text); }
+  .edu-year { font-size: 13px; color: var(--text-muted); }
+  .edu-inst { font-size: 14px; color: var(--pink-soft); margin-bottom: 8px; }
+  .edu-meta { font-size: 13px; color: var(--text-muted); }
+  .edu-meta span { color: var(--green-soft); font-weight: 600; }
+
+  /* Footer */
+  footer {
+    padding: 40px 0 56px;
+    border-top: 1px solid var(--line-pink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-note { font-size: 13px; color: var(--text-muted); }
+  .footer-email {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--pink-soft);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .footer-email:hover { color: var(--pink); }
+
+  @media (max-width: 480px) {
+    .wrap { padding: 0 20px; }
+    .project-card-header, .project-body { padding-left: 20px; padding-right: 20px; }
+    .project-video { margin-left: 20px; margin-right: 20px; }
+    .hero { padding: 52px 0 44px; }
+    section { padding: 48px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <span class="nav-name">Qony · Portfolio</span>
+    <a class="nav-email" href="mailto:qonitaarif5@gmail.com">qonitaarif5@gmail.com</a>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-label">IT Administrator · Balikpapan, Indonesia</div>
+    <h1 class="hero-name">Putri <span>Qonita</span> Arif</h1>
+    <p class="hero-role">Building practical tools from free infrastructure.</p>
+    <p class="hero-bio">
+      Informatics graduate from Institut Teknologi Kalimantan. I work with Google Workspace and Google Apps Script to turn administrative bottlenecks into automated workflows — free tier. I'm still learning a lot, but I like finding the simplest solution that actually holds up.
+    </p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Work Experience -->
+  <section>
+    <div class="section-label pink">Work</div>
+
+    <div class="work-item">
+      <div class="work-header">
+        <span class="work-title">Information Technology Administrator</span>
+        <span class="work-period">Mar 2026 – Present</span>
+      </div>
+      <div class="work-org">Generasi Mandiri Educenter · Full-time · On-site</div>
+      <ul class="work-list">
+        <li>Built an internal web app to manage official letters — automating numbering and document distribution previously done manually</li>
+        <li>Developed a student payment monitoring system (SPP)</li>
+        <li>Built a web-based admin dashboard for the institution</li>
+        <li>Automated student grade input process</li>
+        <li>Built a self-service student ID card generator (Kartu Pelajar Generator)</li>
+        <li>Managed day-to-day Google Workspace operations and provided general technical support</li>
+      </ul>
+      <div class="work-tags">
+        <span class="tag-pink">Google Apps Script</span>
+        <span class="tag-pink">Google Sheets</span>
+        <span class="tag-pink">WordPress</span>
+        <span class="tag-pink">HTML / CSS / JS</span>
+      </div>
+    </div>
+
+
+
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Featured Projects -->
+  <section>
+    <div class="section-label pink">Featured Projects</div>
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <div class="project-card">
+        <div class="project-card-header">
+          <div class="project-badge">FEATURED</div>
+          <div class="project-title">Form Bukti Pembayaran</div>
+          <div class="project-subtitle">
+            A payment proof submission form for Users — built on Google Apps Script + Sheets at zero infrastructure cost.
+          </div>
+        </div>
+
+        <div class="project-video">
+          <video width="100%" controls>
+            <source src="FormBuktiBayarDEMO.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="project-body">
+          <div class="project-block">
+            <div class="project-block-label">The Problems</div>
+            <ul class="problem-list">
+              <li>Users frequently made input errors in standard Google Forms — wrong amounts, empty fields — leaving the treasurer to manually reconcile</li>
+              <li>Google Forms couldn't pull per-student arrears from the database to auto-generate checkboxes</li>
+              <li>No IT budget: the school needed a real solution at Rp0</li>
+              <li>Most users have low digital literacy — login flows caused immediate drop-off</li>
+            </ul>
+          </div>
+          <div class="project-block">
+            <div class="project-block-label">What Was Built</div>
+            <p class="solution-text">
+              Login removed entirely. Users type their child's name — autocomplete surfaces matches — then check off outstanding payments from an auto-generated list pulled live from the school's spreadsheet. Multiple children can be handled in one submission. Uploaded payment photos enter a manual verification queue so the treasurer can cross-check against bank mutations before marking anything as paid. The backend is restricted to expose only Name and NIS during search, keeping the source spreadsheet private.
+            </p>
+          </div>
+          <div class="project-block">
+            <div class="project-block-label">Results</div>
+            <ul class="result-list">
+              <li>Zero input errors — all payment details are selected, not typed</li>
+              <li>Usable by users with minimal tech experience</li>
+              <li>Runs on Google's free infrastructure — total cost: Rp0</li>
+            </ul>
+          </div>
+          <div class="project-stack">
+            <span class="tag-pink">Google Apps Script</span>
+            <span class="tag-pink">Google Sheets</span>
+            <span class="tag-pink">HTML / CSS / JS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card">
+        <div class="project-card-header">
+          <div class="project-badge">FEATURED</div>
+          <div class="project-title">Kartu Pelajar Generator</div>
+          <div class="project-subtitle">
+            A self-service student ID card generator — students verify their identity and receive their card by email in under 2 minutes.
+          </div>
+        </div>
+
+        <div class="project-video">
+          <video width="100%" controls>
+            <source src="KartuPelajarDEMO.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="project-body">
+          <div class="project-block">
+            <div class="project-block-label">The Problems</div>
+            <ul class="problem-list">
+              <li>Admin had to process every card request manually — high demand, limited time</li>
+              <li>The previous Google Form setup required admin to maintain dropdown lists by hand to avoid typos</li>
+              <li>Students consistently didn't know their own NIS/NISN, causing constant interruptions to admin</li>
+              <li>With autocrat, files piled up in Drive until storage filled</li>
+            </ul>
+          </div>
+          <div class="project-block">
+            <div class="project-block-label">What Was Built</div>
+            <p class="solution-text">
+              Students verify with three pieces of information they actually know: full name, date of birth, and mother's name. If those match the database, the system pulls NIS, NISN, and address automatically. The card is generated in-memory (no Drive storage used) and sent to the student's email immediately. No account creation needed. The verification triple acts as a privacy gatekeeper, preventing students from accessing each other's records.
+            </p>
+          </div>
+          <div class="project-block">
+            <div class="project-block-label">Results</div>
+            <ul class="result-list">
+              <li>Students generate their own card in under 2 minutes, any time, without admin involvement</li>
+              <li>Zero Drive storage consumed — no file accumulation</li>
+              <li>Runs on Google's free infrastructure — total cost: Rp0</li>
+            </ul>
+          </div>
+          <div class="project-stack">
+            <span class="tag-pink">Google Apps Script</span>
+            <span class="tag-pink">Google Sheets</span>
+            <span class="tag-pink">HTML / CSS / JS</span>
+            <span class="tag-pink">Email Automation</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider-green"></div>
+
+  <!-- Ongoing Projects -->
+  <section>
+    <div class="section-label green">Ongoing Projects</div>
+    <div class="ongoing-card">
+      <div class="ongoing-info">
+        <div class="ongoing-title">Question Bank Web App</div>
+        <div class="ongoing-desc">
+          A web-based exam and question management system — currently under development. Aimed at streamlining how teachers create, organize, and distribute exam questions.
+        </div>
+      </div>
+      <div class="ongoing-pill">
+        <div class="ongoing-dot"></div>
+        In Progress
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Education -->
+  <section>
+    <div class="section-label pink">Education</div>
+
+    <div class="edu-block">
+      <div class="edu-header">
+        <span class="edu-title">S1 Informatika</span>
+        <span class="edu-year">Graduated 2025</span>
+      </div>
+      <div class="edu-inst">Institut Teknologi Kalimantan (ITK)</div>
+      <div class="edu-meta">GPA <span>3.58 / 4.00</span></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <span class="footer-note">Open to opportunities · Balikpapan, East Kalimantan</span>
+    <a class="footer-email" href="mailto:qonitaarif5@gmail.com">qonitaarif5@gmail.com</a>
+  </footer>
+</div>
+
+</body>
+</html>
